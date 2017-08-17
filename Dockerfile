@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM phusion/baseimage:0.9.19
 
 RUN apt-get update && \
     apt-get install software-properties-common \
