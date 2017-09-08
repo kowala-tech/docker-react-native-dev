@@ -50,11 +50,17 @@ RUN cd && \
 ENV PATH ${PATH}:/opt/node/bin
 RUN npm upgrade
 
+# Apt-get
+RUN apt-get update
+
+# Yarn
+RUN apt-get install yarn
+
 # React tools
 RUN npm install -g react-native-cli
 
 # ImageMagick
 RUN add-apt-repository main
-RUN apt-get update
 RUN apt-get install imagemagick -y
+
 ENV LANG en_US.UTF-8
