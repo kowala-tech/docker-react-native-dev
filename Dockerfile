@@ -41,16 +41,17 @@ RUN cd /opt && \
     echo y | android update sdk --no-ui --all --filter "${ANDROID_EXTRA_COMPONENTS}"
 
 # Node and NPM
-ENV NODE_VERSION 8.1.4
+ENV NODE_VERSION 8.2.1
+ENV NPM_VERSION 5.3.0
 RUN cd && \
     wget -q http://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.gz && \
     tar -xzf node-v${NODE_VERSION}-linux-x64.tar.gz && \
     mv node-v${NODE_VERSION}-linux-x64 /opt/node && \
     rm node-v${NODE_VERSION}-linux-x64.tar.gz
 ENV PATH ${PATH}:/opt/node/bin
+RUN npm install -g npm@${NPM_VERSION}
 
 # React tools
-RUN npm upgrade
 RUN npm install -g react-native-cli
 
 # ImageMagick
