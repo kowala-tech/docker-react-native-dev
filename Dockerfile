@@ -8,6 +8,7 @@ RUN apt-get update && \
     git \
     build-essential \
 	lib32gcc1 libc6-i386 lib32z1 lib32stdc++6 \
+	apt-transport-https \
     unzip -y && \
     apt-get clean
 
@@ -54,7 +55,9 @@ RUN npm upgrade
 RUN apt-get update
 
 # Yarn
-RUN apt-get install yarn
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+RUN apt-get update && apt-get install yarn -y
 
 # React tools
 RUN npm install -g react-native-cli
