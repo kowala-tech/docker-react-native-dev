@@ -9,6 +9,7 @@ RUN apt-get update && \
     build-essential \
 	lib32gcc1 libc6-i386 lib32z1 lib32stdc++6 \
 	apt-transport-https \
+    zip \
     unzip -y && \
     apt-get clean
 
